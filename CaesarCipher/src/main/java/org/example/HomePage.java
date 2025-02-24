@@ -8,13 +8,13 @@ import java.awt.event.ActionListener;
 public class HomePage implements ActionListener {
 
     JFrame frame;
-
-
+    JButton encryptButton;
+    JButton decryptButton;
     public HomePage()
     {
         JLabel questionLabel = new JLabel();
         questionLabel.setText("<html>Şifrelemek(encrpyt) mi yoksa<br>şifresini çözmek(decrpyt) mi istiyorsunuz?<html>");
-        questionLabel.setFont(new Font("Arial", Font.PLAIN, 15));
+        questionLabel.setFont(new Font("Arial", Font.PLAIN, 17));
 
         JPanel questionPanel = new JPanel();
         questionPanel.setPreferredSize(new Dimension(400,150));
@@ -22,12 +22,12 @@ public class HomePage implements ActionListener {
 
         questionPanel.add(questionLabel);
 
-        JButton encryptButton = new JButton();
+        encryptButton = new JButton();
         encryptButton.setText("Encrypt");
         encryptButton.addActionListener(this);
         encryptButton.setPreferredSize(new Dimension(150,40));
 
-        JButton decryptButton = new JButton();
+        decryptButton = new JButton();
         decryptButton.setText("Decrypt");
         decryptButton.addActionListener(this);
         decryptButton.setPreferredSize(new Dimension(150,40));
@@ -52,7 +52,10 @@ public class HomePage implements ActionListener {
     }
     @Override
     public void actionPerformed(ActionEvent e) {
-
+        if (e.getSource() == encryptButton)
+        {
+            EncrpytPage encryptPage = new EncrpytPage();
+        }
     }
 
 }
