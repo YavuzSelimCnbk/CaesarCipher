@@ -3,8 +3,10 @@ package org.example;
 import javax.swing.*;
 import javax.swing.border.LineBorder;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-public class EncrpytPage {
+public class EncrpytPage implements ActionListener {
 
 
     JFrame frame;
@@ -47,6 +49,7 @@ public class EncrpytPage {
 
 
         encrpytButton = new JButton("Şifrele");
+        encrpytButton.addActionListener(this);
         encrpytButton.setPreferredSize(new Dimension(100,30));
         encrpytButton.setBorder(new LineBorder(Color.BLACK, 1,true));
 
@@ -69,5 +72,13 @@ public class EncrpytPage {
         frame.setVisible(true);
 
     }
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        if (e.getSource() == encrpytButton) {
+            String key = keyField.getText();
+            String value = valueField.getText();
+        }
+    }
+
 }
 
