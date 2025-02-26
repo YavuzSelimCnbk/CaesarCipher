@@ -54,7 +54,9 @@ public class HomePage implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == encryptButton)
         {
+            frame.dispose();
             EncrpytPage encryptPage = new EncrpytPage();
+
         }
     }
 

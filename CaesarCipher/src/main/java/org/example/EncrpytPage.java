@@ -15,6 +15,12 @@ public class EncrpytPage implements ActionListener {
     JButton encrpytButton;
 
 
+
+    public static String encryptedMessage;
+
+    String alphabet = "abcdefgğhıijklmnoöprsştuüvyz";
+
+
     public EncrpytPage() {
         JLabel title = new JLabel("Şifreleme(Encrpyt)");
 
@@ -72,11 +78,37 @@ public class EncrpytPage implements ActionListener {
         frame.setVisible(true);
 
     }
+    public String encrpytionFunction(int key,String value)
+    {
+        StringBuilder encrptyedText = new StringBuilder();
+
+        for (int i = 0; i < value.length(); i++) {
+            char c = value.toLowerCase().charAt(i);
+
+            int index = alphabet.indexOf(c);
+
+            if (index != -1) {
+                int newIndex = (index + key) % alphabet.length();
+                encrptyedText.append(alphabet.charAt(newIndex));
+            }
+            else {
+                encrptyedText.append(c);
+            }
+        }
+        return encrptyedText.toString();
+    }
+
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == encrpytButton) {
             String key = keyField.getText();
             String value = valueField.getText();
+            int intOfKey = Integer.parseInt(key);
+
+            encryptedMessage = encrpytionFunction(intOfKey,value);
+
+            frame.dispose();
+            ResultPage resultPage = new ResultPage();
         }
     }
 
